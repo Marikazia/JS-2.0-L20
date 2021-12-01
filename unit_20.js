@@ -175,10 +175,21 @@ document.querySelector('.i-10').onkeydown = t10;
 5. Самостоятельно добавьте клавишу alt, enter.
 */
 
+const keyboard =  document.querySelectorAll('.key') //получить элементы с классом key
+const symbol = {
+  "Control" : "ctrl",
+}
+
 function t11(event) {
     console.log(event.key);
+    let k = event.key;
+    if ( symbol[k] !== undefined) k = symbol[k];
+    keyboard.forEach(item => item.classList.remove('active'));
 
+    let singleKey = document.querySelector(`.key[data="${k}"]`);
+    if (singleKey) singleKey.classList.add('active');
 }
 
 document.querySelector('.i-11').onkeydown = t11;
+
 
